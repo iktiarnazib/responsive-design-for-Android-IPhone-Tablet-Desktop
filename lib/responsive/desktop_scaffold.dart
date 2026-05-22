@@ -50,7 +50,6 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
 
                 //tiles below it
                 Expanded(
-                  flex: 2,
                   child: ListView.builder(
                     itemCount: 10,
                     itemBuilder: (BuildContext context, int index) {

@@ -22,47 +22,59 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
       ),
       body: Row(
         children: [
-          //opened drawer
+          // Opened drawer
           MyDrawer(),
 
-          //rest of the things
+          // Rest of the things
           Expanded(
             flex: 2,
-            child: Column(
-              children: [
-                //4 boxes on the top
-                AspectRatio(
-                  aspectRatio: 4,
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return Column(
+                  children: [
+                    // 4 boxes on top
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxHeight:
+                            constraints.maxHeight *
+                            0.4, // never exceed 40% of column height
+                      ),
+                      child: AspectRatio(
+                        aspectRatio: 4,
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: GridView.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 4,
+                                ),
+                            itemCount: 4,
+                            itemBuilder: (BuildContext context, int index) {
+                              return MyBox();
+                            },
                           ),
-                      itemCount: 4,
-                      itemBuilder: (BuildContext context, int index) {
-                        return MyBox();
-                      },
+                        ),
+                      ),
                     ),
-                  ),
-                ),
 
-                //tiles below it
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: 10,
-                    itemBuilder: (BuildContext context, int index) {
-                      return MyTile();
-                    },
-                  ),
-                ),
-              ],
+                    // Tiles below
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: 10,
+                        itemBuilder: (BuildContext context, int index) {
+                          return MyTile();
+                        },
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
-          Expanded(
-            child: Expanded(child: Container(color: Colors.pink)),
-          ),
+
+          // Right pink panel
+          Expanded(child: Container(color: Colors.pink)),
         ],
       ),
     );

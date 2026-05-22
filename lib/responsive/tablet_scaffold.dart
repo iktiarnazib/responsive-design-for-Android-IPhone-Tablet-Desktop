@@ -21,35 +21,41 @@ class _TabletScaffoldState extends State<TabletScaffold> {
         iconTheme: IconThemeData(color: backgroundColor),
       ),
       drawer: MyDrawer(),
-      body: Column(
-        children: [
-          //4 boxes on the top
-          AspectRatio(
-            aspectRatio: 4,
-            child: SizedBox(
-              width: double.infinity,
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          return Column(
+            children: [
+              // 4 boxes
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: constraints.maxHeight * 0.4,
                 ),
-                itemCount: 4,
-                itemBuilder: (BuildContext context, int index) {
-                  return MyBox();
-                },
+                child: AspectRatio(
+                  aspectRatio: 4,
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                    ),
+                    itemCount: 4,
+                    itemBuilder: (BuildContext context, int index) {
+                      return MyBox();
+                    },
+                  ),
+                ),
               ),
-            ),
-          ),
 
-          //tiles below it
-          Expanded(
-            child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (BuildContext context, int index) {
-                return MyTile();
-              },
-            ),
-          ),
-        ],
+              // Tiles
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (BuildContext context, int index) {
+                    return MyTile();
+                  },
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

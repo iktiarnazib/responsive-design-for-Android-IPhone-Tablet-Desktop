@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:responsiveui/components/my_box.dart';
 import 'package:responsiveui/components/my_drawer.dart';
+import 'package:responsiveui/components/my_tile.dart';
 import 'package:responsiveui/theme/color_constants.dart';
 
 class MobileScaffold extends StatefulWidget {
@@ -32,16 +34,21 @@ class _MobileScaffoldState extends State<MobileScaffold> {
                 ),
                 itemCount: 4,
                 itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(color: Colors.blueAccent),
-                  );
+                  return MyBox();
                 },
               ),
             ),
           ),
 
           //tiles below it
+          Expanded(
+            child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index) {
+                return MyTile();
+              },
+            ),
+          ),
         ],
       ),
     );

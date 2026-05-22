@@ -13,12 +13,11 @@ class _MobileScaffoldState extends State<MobileScaffold> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
-        iconTheme: IconThemeData(color: Colors.grey[300]),
+        backgroundColor: appbarColor,
+        iconTheme: IconThemeData(color: backgroundColor),
       ),
-
-      backgroundColor: ColorConstants().backgroundColor,
       drawer: MyDrawer(),
     );
   }

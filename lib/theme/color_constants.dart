@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-class ColorConstants {
-  final backgroundColor = Colors.grey[300];
-}
+final backgroundColor = Colors.grey[300];
+
+final appbarColor = Colors.grey[900];

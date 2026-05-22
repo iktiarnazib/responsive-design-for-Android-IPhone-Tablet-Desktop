@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsiveui/theme/color_constants.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -6,7 +7,7 @@ class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: backgroundColor,
       child: Column(
         children: [
           //drawer header

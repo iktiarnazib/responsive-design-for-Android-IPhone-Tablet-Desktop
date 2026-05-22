@@ -19,6 +19,31 @@ class _MobileScaffoldState extends State<MobileScaffold> {
         iconTheme: IconThemeData(color: backgroundColor),
       ),
       drawer: MyDrawer(),
+      body: Column(
+        children: [
+          //4 boxes on the top
+          AspectRatio(
+            aspectRatio: 1,
+            child: SizedBox(
+              width: double.infinity,
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+                itemCount: 4,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(color: Colors.blueAccent),
+                  );
+                },
+              ),
+            ),
+          ),
+
+          //tiles below it
+        ],
+      ),
     );
   }
 }

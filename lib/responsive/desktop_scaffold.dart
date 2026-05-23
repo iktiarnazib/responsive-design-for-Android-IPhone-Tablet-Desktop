@@ -41,19 +41,16 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                       ),
                       child: AspectRatio(
                         aspectRatio: 4,
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: GridView.builder(
-                            physics: NeverScrollableScrollPhysics(),
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 4,
-                                ),
-                            itemCount: 4,
-                            itemBuilder: (BuildContext context, int index) {
-                              return MyBox();
-                            },
-                          ),
+                        child: GridView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 4,
+                              ),
+                          itemCount: 4,
+                          itemBuilder: (BuildContext context, int index) {
+                            return MyBox();
+                          },
                         ),
                       ),
                     ),
